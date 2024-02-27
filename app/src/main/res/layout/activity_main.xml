@@ -6,13 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <!-- Text Field -->
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/btcInputFragment"
+        android:name="com.example.bitcoinwalletapp.ui.BtcInputFragment"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@color/white"
+        android:padding="20dp"
+        android:text="@string/txt_currency_conversion"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/CurrencyConversionsFragment"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/CurrencyConversionsFragment"
+        android:name="com.example.bitcoinwalletapp.ui.CurrencyConversionsFragment"
+        android:layout_width="409dp"
+        android:layout_height="409dp"
+
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
