@@ -6,6 +6,10 @@
     <string name="inputBoxHint">Please enter BTC value</string>
     <string name="txtDescriptionInput">BTC (Base Currency)</string>
     <string name="txtUpdate">Update</string>
+    <string name="txtBTCValue">BTC Value</string>
+
+    <string name="txtDefaultValue">0.00 BTC</string>
+
 
 
 

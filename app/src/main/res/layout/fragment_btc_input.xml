@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +22,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <!-- Wallet Icon -->
@@ -50,6 +50,7 @@
               >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/inputBoxHint"
@@ -59,16 +60,38 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- BTC Value -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/icnBTC"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/icn_bitcoin_cryptocurrency"/>
+
+                <TextView
+                    android:id="@+id/txtBTCValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtDefaultValue"
+                    android:textSize="40sp"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnUpdate"
                 android:layout_width="match_parent"
-                android:text="@string/txtUpdate"
-                android:layout_marginTop="20dp"
                 android:layout_height="match_parent"
-             />
+                android:layout_marginTop="20dp"
+                android:text="@string/txtUpdate" />
 
         </LinearLayout>
+
+
 
     </androidx.cardview.widget.CardView>
 

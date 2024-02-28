@@ -17,6 +17,13 @@ import android.view.ViewGroup;
 
 import com.example.bitcoinwalletapp.R;
 
+/**
+ * @author tlhogi-manye
+ * @date 28/02/2024
+ *
+ * This fragment handles the input of the user and is responsible for updating the BTC value
+ */
+
 public class BtcInputFragment extends Fragment {
 
 
@@ -24,6 +31,8 @@ public class BtcInputFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+
         return inflater.inflate(R.layout.fragment_btc_input, container, false);
     }
 }
