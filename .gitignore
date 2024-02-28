@@ -30,3 +30,11 @@ replay_pid*
 *.lock
 *.bin
 *.iml
+.gradle/7.2/fileHashes/fileHashes.lock
+.gradle/7.2/fileHashes/fileHashes.bin
+.gradle/7.2/executionHistory/executionHistory.lock
+.gradle/7.2/fileHashes/resourceHashesCache.bin
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
+.gradle/buildOutputCleanup/outputFiles.bin
+.gradle/checksums/sha1-checksums.bin
+.gradle/checksums/checksums.lock

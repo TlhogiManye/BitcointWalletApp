@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.bitcoinwalletapp.R;
 import com.example.bitcoinwalletapp.adapters.CurrencyAdapter;
-import com.example.bitcoinwalletapp.model.CurrencyItem;
+import com.example.bitcoinwalletapp.models.CurrencyItem;
 
 import java.util.ArrayList;
 import java.util.List;
