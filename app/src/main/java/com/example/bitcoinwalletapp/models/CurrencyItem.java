@@ -1,4 +1,4 @@
-package com.example.bitcoinwalletapp.model;
+package com.example.bitcoinwalletapp.models;
 
 public class CurrencyItem {
 
