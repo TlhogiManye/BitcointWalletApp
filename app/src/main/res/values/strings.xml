@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">BitCoinWalletApp</string>
+    <string name="app_name">BcwApp</string>
+
+    <string name="wallet_icon_description">Wallet icon</string>
+    <string name="txt_currency_conversion">Value of your bitcoin</string>
+    <string name="inputBoxHint">Please enter BTC value</string>
+    <string name="txtDescriptionInput">BTC (Base Currency)</string>
+    <string name="txtUpdate">Update</string>
+    <string name="txtBTCValue">BTC Value</string>
+
+    <string name="txtDefaultValue">0.00 BTC</string>
+
+
+
+
 </resources>
