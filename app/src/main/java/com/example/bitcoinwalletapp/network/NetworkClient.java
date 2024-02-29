@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Network retrofit client to assist in consuming the API
  */
 public class NetworkClient {
-    private static final String BASE_URL = "https://api.apilayer.com/fixer";
+    private static final String BASE_URL = "https://api.apilayer.com/fixer/";
     private static Retrofit retrofit;
 
     public static Retrofit getRetrofitInstance(String authToken) {

@@ -21,7 +21,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/btcInputFragment"
-                android:name="com.example.bitcoinwalletapp.ui.BtcInputFragment"
+                android:name="com.example.bitcoinwalletapp.view.BtcInputFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -36,7 +36,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/CurrencyConversionsFragment"
-                android:name="com.example.bitcoinwalletapp.ui.CurrencyConversionsFragment"
+                android:name="com.example.bitcoinwalletapp.view.CurrencyConversionsFragment"
                 android:layout_width="409dp"
                 android:layout_height="409dp"
                 android:layout_marginBottom="4dp" />

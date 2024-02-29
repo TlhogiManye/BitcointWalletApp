@@ -1,8 +1,8 @@
 package com.example.bitcoinwalletapp.network;
 
-import com.example.bitcoinwalletapp.models.ConvertDataResponse;
-import com.example.bitcoinwalletapp.models.FluctuationDataResponse;
-import com.example.bitcoinwalletapp.models.LatestDataResponse;
+import com.example.bitcoinwalletapp.model.ConvertDataResponse;
+import com.example.bitcoinwalletapp.model.FluctuationDataResponse;
+import com.example.bitcoinwalletapp.model.LatestDataResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -18,7 +18,7 @@ public interface NetworkService {
 
     // GET /convert
     @GET("/convert")
-    Call<ConvertDataResponse> getConvertData(@Query("to") String toCurrency, @Query("from") String fromCurrency, @Query("amount") String amount );
+    Call<ConvertDataResponse> getConvertData(@Query("to") String toCurrency, @Query("from") String fromCurrency, @Query("amount") Double amount );
 
     // GET /fluctuation
     @GET("/fluctuation")
@@ -26,6 +26,6 @@ public interface NetworkService {
 
     // GET /latest
     @GET("/latest")
-    Call<LatestDataResponse> getLatestData();
+    Call<LatestDataResponse> getLatestData(@Query("symbols") String symbols,@Query("base")String base);
 }
 

@@ -3,7 +3,7 @@
  * @date 27/02/24
  *
  */
-package com.example.bitcoinwalletapp.ui;
+package com.example.bitcoinwalletapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
