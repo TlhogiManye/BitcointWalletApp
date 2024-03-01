@@ -57,4 +57,16 @@ public class CurrencyConversionsFragment extends Fragment {
 
         return list;
     }
+
+    public void updateRecyclerView(String newBtcValue) {
+        // Update the currency list with the new BTC value
+        for (CurrencyItem currencyItem : currencyList) {
+            // Update the currency value based on the new BTC value
+            // You might need to implement a method in CurrencyItem to calculate the new value
+            currencyItem.setCurrencyValue(newBtcValue);
+        }
+
+        // Notify the adapter about the data change
+        currencyAdapter.notifyDataSetChanged();
+    }
 }

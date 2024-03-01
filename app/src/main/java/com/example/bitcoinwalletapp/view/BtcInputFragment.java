@@ -28,8 +28,8 @@ public class BtcInputFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_btc_input, container, false);
 
         // Pass the network service to AppRepositoryImpl
-        AppRepository appRepository = new AppRepositoryImpl(NetworkClient.getNetworkService(BuildConfig.API_TOKEN));
-        viewModel = new AppViewModel(appRepository);
+        AppRepository appRepository = new AppRepositoryImpl(NetworkClient.getNetworkService(BuildConfig.API_KEY));
+        viewModel = new AppViewModel(appRepository, (CurrencyConversionsFragment) getParentFragment());
 
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(getViewLifecycleOwner());
@@ -38,7 +38,7 @@ public class BtcInputFragment extends Fragment {
         binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewModel.makeApiCallAndUpdateUI();
+                viewModel.makeApiCall();
             }
         });
 

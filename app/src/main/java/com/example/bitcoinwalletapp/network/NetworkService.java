@@ -17,15 +17,15 @@ import retrofit2.http.Query;
 public interface NetworkService {
 
     // GET /convert
-    @GET("/convert")
+    @GET("convert")
     Call<ConvertDataResponse> getConvertData(@Query("to") String toCurrency, @Query("from") String fromCurrency, @Query("amount") Double amount );
 
     // GET /fluctuation
-    @GET("/fluctuation")
+    @GET("fluctuation")
     Call<FluctuationDataResponse> getFluctuationData();
 
     // GET /latest
-    @GET("/latest")
+    @GET("latest")
     Call<LatestDataResponse> getLatestData(@Query("symbols") String symbols,@Query("base")String base);
 }
 

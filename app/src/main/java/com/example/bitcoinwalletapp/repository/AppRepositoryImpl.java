@@ -14,7 +14,7 @@ public class AppRepositoryImpl implements AppRepository {
     }
 
     @Override
-    public void makeApiCall(String currencies, String baseCurrency, double amount, Callback<ConvertDataResponse> callback) {
+    public void convertCurrency(String currencies, String baseCurrency, double amount, Callback<ConvertDataResponse> callback) {
         Call<ConvertDataResponse> call = networkService.getConvertData(currencies, baseCurrency, amount);
         call.enqueue(callback);
     }

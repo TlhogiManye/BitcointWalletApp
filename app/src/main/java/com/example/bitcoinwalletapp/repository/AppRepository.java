@@ -4,5 +4,5 @@ import com.example.bitcoinwalletapp.model.ConvertDataResponse;
 import retrofit2.Callback;
 
 public interface AppRepository {
-    void makeApiCall(String currencies, String baseCurrency, double amount, Callback<ConvertDataResponse> callback);
+    void convertCurrency(String currencies, String baseCurrency, double amount, Callback<ConvertDataResponse> callback);
 }
