@@ -1,10 +1,17 @@
 package com.example.bitcoinwalletapp.viewmodel;
 
+import static java.security.AccessController.getContext;
+
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.example.bitcoinwalletapp.BR;
 import com.example.bitcoinwalletapp.model.ConvertDataResponse;
+import com.example.bitcoinwalletapp.model.LatestDataResponse;
+import com.example.bitcoinwalletapp.model.Rates;
 import com.example.bitcoinwalletapp.repository.AppRepository;
 import com.example.bitcoinwalletapp.view.CurrencyConversionsFragment;
 
@@ -18,8 +25,6 @@ public class AppViewModel extends BaseObservable {
     private final CurrencyConversionsFragment currencyConversionsFragment;
     private String btcAmount;
     private String btcValue;
-
-    // ... Other code
 
     @Bindable
     public String getBtcAmount() {
@@ -41,7 +46,6 @@ public class AppViewModel extends BaseObservable {
         notifyPropertyChanged(BR.btcValue);
     }
 
-
     public AppViewModel(AppRepository appRepository, CurrencyConversionsFragment currencyConversionsFragment) {
         this.appRepository = appRepository;
         this.currencyConversionsFragment = currencyConversionsFragment;
@@ -52,41 +56,60 @@ public class AppViewModel extends BaseObservable {
         this.currencyConversionsFragment = null; // Assuming no direct connection without passing the fragment
     }
 
-    // Add other methods and variables...
-
-    public void makeApiCall() {
-        // Retrieve necessary parameters for the API call
-        String currencies = "ZAR";
+    public void getRatesApiCall() {
+        String currencies = "ZAR,USD,AUD";
         String baseCurrency = "BTC";
-        double amount = 233.08;
+        double amount = Double.parseDouble(btcAmount); // Convert user input to double
 
-        // Make the API call through the repository
-        appRepository.convertCurrency(currencies, baseCurrency, amount, new Callback<ConvertDataResponse>() {
+        Log.d("convFrag: ", "BeforeOnResponse:  currencyConversion");
+
+        appRepository.getCurrencyRates(currencies, baseCurrency, new Callback<LatestDataResponse>() {
             @Override
-            public void onResponse(Call<ConvertDataResponse> call, Response<ConvertDataResponse> response) {
-                // Handle API response
-                ConvertDataResponse currencyConversion = response.body();
-                if (currencyConversion != null) {
-                    //updateBtcValue(Double.toString(currencyConversion.getResult()));
-                    updateRecyclerView(Double.toString(currencyConversion.getResult()));
+            public void onResponse(Call<LatestDataResponse> call, Response<LatestDataResponse> response) {
+                Log.d("convFrag: ", "onResponse:  currencyConversion" + response);
+                try {
+                    LatestDataResponse currencyRateConversions = response.body();
+                    if (currencyRateConversions != null) {
+                        // Ensure UI updates on the main thread
+                        if (currencyConversionsFragment != null) {
+                            currencyConversionsFragment.getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    updateBtcValue(btcAmount);
+                                    updateRecyclerView(currencyRateConversions.getRates());
+                                }
+                            });
+                        }
+                    }
+                } catch(Exception e){
+                    Log.e("convFrag: ", "Exception in onResponse", e);
                 }
             }
 
             @Override
-            public void onFailure(Call<ConvertDataResponse> call, Throwable t) {
-                // Handle API call failure
+            public void onFailure(Call<LatestDataResponse> call, Throwable t) {
+                Log.e("convFrag", "API call failed", t);
+
+                String errorMessage = "Failed to retrieve data. Please check your internet connection.";
+
+                if (t.getMessage() != null) {
+                    errorMessage += "\nError: " + t.getMessage();
+                }
+
+                Log.e("error API:", errorMessage, t);
             }
+
         });
     }
 
     private void updateBtcValue(String newBtcValue) {
-        // Update the ViewModel with the new BTC value
         setBtcValue(newBtcValue);
     }
 
-    private void updateRecyclerView(String newBtcValue) {
+    private void updateRecyclerView(Rates newRates) {
         if (currencyConversionsFragment != null) {
-            currencyConversionsFragment.updateRecyclerView(newBtcValue);
+            currencyConversionsFragment.updateRecyclerView(newRates);
         }
     }
+
 }

@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 /**
  * @author tlhogi-manye
  *
- * Interfact that will carry all the endpoints for this particular application
+ * Interface that will carry all the endpoints for this particular application
  */
 
 public interface NetworkService {

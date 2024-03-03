@@ -37,7 +37,7 @@
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/CurrencyConversionsFragment"
                 android:name="com.example.bitcoinwalletapp.view.CurrencyConversionsFragment"
-                android:layout_width="409dp"
+                android:layout_width="match_parent"
                 android:layout_height="409dp"
                 android:layout_marginBottom="4dp" />
         </LinearLayout>

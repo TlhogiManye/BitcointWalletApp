@@ -1,6 +1,7 @@
 package com.example.bitcoinwalletapp.repository;
 
 import com.example.bitcoinwalletapp.model.ConvertDataResponse;
+import com.example.bitcoinwalletapp.model.LatestDataResponse;
 import com.example.bitcoinwalletapp.network.NetworkService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,6 +17,12 @@ public class AppRepositoryImpl implements AppRepository {
     @Override
     public void convertCurrency(String currencies, String baseCurrency, double amount, Callback<ConvertDataResponse> callback) {
         Call<ConvertDataResponse> call = networkService.getConvertData(currencies, baseCurrency, amount);
+        call.enqueue(callback);
+    }
+
+    @Override
+    public void getCurrencyRates(String symbols, String baseCurrency, Callback<LatestDataResponse> callback) {
+        Call<LatestDataResponse> call = networkService.getLatestData(symbols, baseCurrency);
         call.enqueue(callback);
     }
 }

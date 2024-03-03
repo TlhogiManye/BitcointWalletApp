@@ -3,6 +3,7 @@ package com.example.bitcoinwalletapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 /**
  * @author tlhogi-manye
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.d("MainActivity: ", "MainActivity entrance");
 
     }
 }

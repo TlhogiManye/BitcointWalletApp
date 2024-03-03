@@ -10,7 +10,7 @@ public class ConvertDataResponse implements Serializable {
     private String date;
 
     @SerializedName("historical")
-    private String historical;
+    private boolean historical;
 
     @SerializedName("info")
     private Info info;
@@ -28,7 +28,7 @@ public class ConvertDataResponse implements Serializable {
         return date;
     }
 
-    public String getHistorical() {
+    public boolean getHistorical() {
         return historical;
     }
 
@@ -48,42 +48,7 @@ public class ConvertDataResponse implements Serializable {
         return success;
     }
 
-    public static class Info {
-        @SerializedName("rate")
-        private double rate;
 
-        @SerializedName("timestamp")
-        private long timestamp;
 
-        public double getRate() {
-            return rate;
-        }
 
-        public long getTimestamp() {
-            return timestamp;
-        }
-    }
-
-    public static class Query {
-        @SerializedName("amount")
-        private int amount;
-
-        @SerializedName("from")
-        private String from;
-
-        @SerializedName("to")
-        private String to;
-
-        public int getAmount() {
-            return amount;
-        }
-
-        public String getFrom() {
-            return from;
-        }
-
-        public String getTo() {
-            return to;
-        }
-    }
 }
