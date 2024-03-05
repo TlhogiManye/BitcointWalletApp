@@ -51,7 +51,7 @@ For detailed information on the app's architecture, principles, and security mea
 
 ### Documentation Summary:
 
-For an in-depth understanding of the Bitcoin Wallet App, refer to the comprehensive [documentation](documentation.md), covering topics such as:
+For an in-depth understanding of the Bitcoin Wallet App, refer to the comprehensive [documentation]([documentation.md](https://docs.google.com/document/d/15jci7MeHE_BN08NG03H1iUERJzWzDLyLXxwSKic8NiA/edit?usp=sharing), covering topics such as:
 
 - Architecture Overview
 - SOLID Principles
