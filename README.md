@@ -46,8 +46,7 @@ Areas for future enhancements include user authentication, transaction history, 
 
 Special thanks to all contributors and resources that influenced the development of the Bitcoin Wallet App. Collaborative efforts and shared knowledge have contributed to the success of the project.
 
-For detailed information on the app's architecture, principles, and security measures, refer to the full [Documentation](documentation.md).
-
+For detailed information on the app's architecture, principles, and security measures, refer to the the documentation
 ---
 
 ### Documentation Summary:
