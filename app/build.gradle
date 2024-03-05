@@ -5,8 +5,13 @@ plugins {
 android {
     compileSdk 34
 
+    buildFeatures {
+        dataBinding true
+    }
+
     defaultConfig {
-        buildConfigField("String", "API_TOKEN", "\"1yJg56aYgDPSAwO5mMhmq7I8AMxje8Zs\"")
+        buildConfigField("String", "API_KEY", "\"1yJg56aYgDPSAwO5mMhmq7I8AMxje8Zs\"")
+        buildConfigField"String","SECRET_KEY","\"kdfSrpGeHlCfUTca1M0T2nLhKZ3Gmf2Y\""
         applicationId "com.example.bitcoinwalletapp"
         minSdk 21
         targetSdk 34
@@ -34,9 +39,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
     testImplementation 'junit:junit:4.13.2'

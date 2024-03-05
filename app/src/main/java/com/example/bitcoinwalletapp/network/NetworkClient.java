@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Network retrofit client to assist in consuming the API
  */
 public class NetworkClient {
-    private static final String BASE_URL = "https://api.apilayer.com/fixer";
+    private static final String BASE_URL = "https://api.apilayer.com/fixer/";
     private static Retrofit retrofit;
 
     public static Retrofit getRetrofitInstance(String authToken) {
@@ -30,19 +30,17 @@ public class NetworkClient {
                     @Override
                     public okhttp3.Response intercept(Chain chain) throws IOException {
                         Request original = chain.request();
-                        Request request = original.newBuilder()
-                                .header("Authorization", "Bearer " + authToken)
-                                .method(original.method(), original.body())
-                                .build();
+                        Request.Builder requestBuilder = original.newBuilder()
+                                .header("apikey", authToken)
+                                .method(original.method(), original.body());
+                        Request request = requestBuilder.build();
                         return chain.proceed(request);
                     }
                 });
             }
-        }
 
-        if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .client(getOkHttp())
+                    .client(getOkHttp(httpClient))  // Pass the httpClient here
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
@@ -54,8 +52,8 @@ public class NetworkClient {
      * Method used for logging API calls for easy debugging
      * @return
      */
-    private static OkHttpClient getOkHttp() {
-        return new OkHttpClient.Builder()
+    private static OkHttpClient getOkHttp(OkHttpClient.Builder httpClient) {
+        return httpClient
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
@@ -63,6 +61,7 @@ public class NetworkClient {
                         .setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build();
     }
+
 
 
     public static NetworkService getNetworkService(String authToken) {
