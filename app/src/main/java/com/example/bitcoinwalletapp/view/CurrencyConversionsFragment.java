@@ -55,6 +55,7 @@ public class CurrencyConversionsFragment extends Fragment {
         AppRepository appRepository = new AppRepositoryImpl(NetworkClient.getNetworkService(BuildConfig.API_KEY));
         viewModel = new AppViewModel(appRepository, this);
 
+        if(viewModel.getBtcAmountFromStorage()!=null)
         inputAmountFromStorage = Double.parseDouble(viewModel.getBtcAmountFromStorage());
 
         currencyList = generateDummyData();
@@ -79,10 +80,16 @@ public class CurrencyConversionsFragment extends Fragment {
 
          fluctuationDataResponse = viewModel.getDecryptedFluctuationDataFromStorage();
         //ensure rates are coming from sharedPreferences so that they are stored and not lost when user leaves app
-            list.add(new CurrencyItem(R.drawable.icn_flag_zar, "ZAR","R " + decimalFormat.format(storedRates.getZar()* inputAmountFromStorage), "0.0%"));
-            list.add(new CurrencyItem(R.drawable.icn_flag_usd, "USD", "$ "+ decimalFormat.format(storedRates.getUsd()* inputAmountFromStorage), "0.0%"));
-            list.add(new CurrencyItem(R.drawable.icn_flag_aud, "AUD","$ " + decimalFormat.format(storedRates.getAud()* inputAmountFromStorage), "0.0%"));
-
+        if(storedRates!=null) {
+            list.add(new CurrencyItem(R.drawable.icn_flag_zar, "ZAR", "R " + decimalFormat.format(storedRates.getZar() * inputAmountFromStorage), "0.0%"));
+            list.add(new CurrencyItem(R.drawable.icn_flag_usd, "USD", "$ " + decimalFormat.format(storedRates.getUsd() * inputAmountFromStorage), "0.0%"));
+            list.add(new CurrencyItem(R.drawable.icn_flag_aud, "AUD", "$ " + decimalFormat.format(storedRates.getAud() * inputAmountFromStorage), "0.0%"));
+        }
+        else{
+            list.add(new CurrencyItem(R.drawable.icn_flag_zar, "ZAR", "R 0.00" , "0.0%"));
+            list.add(new CurrencyItem(R.drawable.icn_flag_usd, "USD", "$ 0.00", "0.0%"));
+            list.add(new CurrencyItem(R.drawable.icn_flag_aud, "AUD", "$ 0.00", "0.0%"));
+        }
         return list;
     }
 
