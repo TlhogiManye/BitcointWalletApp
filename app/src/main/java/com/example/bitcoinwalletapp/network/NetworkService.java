@@ -22,7 +22,7 @@ public interface NetworkService {
 
     // GET /fluctuation
     @GET("fluctuation")
-    Call<FluctuationDataResponse> getFluctuationData();
+    Call<FluctuationDataResponse> getFluctuationData(@Query("start_date") String startDate, @Query("end_date") String endDate, @Query("base") String base,@Query("symbols") String symbols);
 
     // GET /latest
     @GET("latest")

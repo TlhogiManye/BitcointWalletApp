@@ -11,6 +11,7 @@ android {
 
     defaultConfig {
         buildConfigField("String", "API_KEY", "\"1yJg56aYgDPSAwO5mMhmq7I8AMxje8Zs\"")
+        buildConfigField"String","SECRET_KEY","\"kdfSrpGeHlCfUTca1M0T2nLhKZ3Gmf2Y\""
         applicationId "com.example.bitcoinwalletapp"
         minSdk 21
         targetSdk 34

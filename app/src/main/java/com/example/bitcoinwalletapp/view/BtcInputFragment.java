@@ -1,5 +1,8 @@
 package com.example.bitcoinwalletapp.view;
 
+import static com.example.bitcoinwalletapp.BR.btcAmount;
+import static com.example.bitcoinwalletapp.BR.btcValue;
+
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.databinding.DataBindingUtil;
@@ -8,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.bitcoinwalletapp.BuildConfig;
 import com.example.bitcoinwalletapp.R;
@@ -43,6 +47,14 @@ public class BtcInputFragment extends Fragment {
             Log.d("BtcInputFragment", "CurrencyConversionsFragment not found");
         }
 
+        //set the values from persisted amounts
+
+        String storedAmount = viewModel.getBtcAmountFromStorage();
+
+        if(storedAmount!=null){
+            viewModel.setBtcValue(storedAmount);
+        }
+
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(getViewLifecycleOwner());
 
@@ -50,7 +62,16 @@ public class BtcInputFragment extends Fragment {
         binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewModel.getRatesApiCall();
+                if (viewModel.getBtcAmount() != null && !viewModel.getBtcAmount().isEmpty()) {
+
+                    viewModel.saveBtcAmountToStorage(viewModel.getBtcAmount());
+                    viewModel.getRatesApiCall();
+                    viewModel.getFluctuationApiCall();
+
+
+                } else {
+                    Toast.makeText(requireContext(), "BTC input cannot be empty", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

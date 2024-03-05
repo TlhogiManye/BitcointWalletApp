@@ -1,6 +1,7 @@
 package com.example.bitcoinwalletapp.repository;
 
 import com.example.bitcoinwalletapp.model.ConvertDataResponse;
+import com.example.bitcoinwalletapp.model.FluctuationDataResponse;
 import com.example.bitcoinwalletapp.model.LatestDataResponse;
 import com.example.bitcoinwalletapp.network.NetworkService;
 import retrofit2.Call;
@@ -25,4 +26,11 @@ public class AppRepositoryImpl implements AppRepository {
         Call<LatestDataResponse> call = networkService.getLatestData(symbols, baseCurrency);
         call.enqueue(callback);
     }
+
+    @Override
+    public void getFluctuationData(String endDate, String startDate,String baseCurrency,String symbols, Callback<FluctuationDataResponse> callback) {
+        Call<FluctuationDataResponse> call = networkService.getFluctuationData(endDate, startDate, baseCurrency,symbols);
+        call.enqueue(callback);
+    }
+
 }
